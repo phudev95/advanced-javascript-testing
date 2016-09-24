@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function - Name</title>
+</head>
+<body>
+    <script src="../libs/core.js"></script>
+    <script type="text/javascript">
+        // ninja is global
+        // myNinja is local
+        // Right?
+
+        var ninja = function myNinja () {
+            assert(ninja == myNinja, "This function is named two things - at once!");
+        };
+        ninja();
+
+        assert(typeof myNinja == "undefined", "But myNinja isn't defined outside of the function.");
+        console.warn(ninja);
+    </script>
+</body>
+</html>
