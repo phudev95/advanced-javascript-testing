@@ -1,0 +1,23 @@
+{
+  "name": "advanced-javascript",
+  "version": "1.0.0",
+  "description": "Learning and testing JavaScript with Level is Advanced.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phudev95/advanced-javascript-testing.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "Core"
+  ],
+  "author": "phudev95@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phudev95/advanced-javascript-testing/issues"
+  },
+  "homepage": "https://github.com/phudev95/advanced-javascript-testing#readme"
+}
