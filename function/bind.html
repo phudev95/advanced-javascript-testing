@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bind</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // The .bind method from Prototype.js
+        Function.prototype.bind = function () {
+            var fn = this;
+            // arguments is type of Object
+            console.log(arguments);
+
+            // Convert arguments with type is Object to Array
+            var args = Array.prototype.slice.call(arguments);
+            console.log(args);
+
+            var object = args.shift();
+            return function () {
+                return fn.apply(
+                    object,
+                    args.concat(Array.prototype.slice.call(arguments))
+                );
+            };
+        };
+
+        var obj_1 = {
+            name: 'John',
+            age: 21
+        };
+
+        var obj_2 = {
+            name: 'Doe',
+            age: 23,
+
+            getInfo: function () {
+                console.warn('Parameters: ', arguments);
+                return this.name + ', ' + this.age;
+            }
+        };
+
+        // getInfo method using scope of obj_1
+        var getInfo = obj_2.getInfo.bind(obj_1, 'arg_1', 'arg_2', 'arg_n');
+        console.log('getInfo: ', getInfo());
+    </script>
+</body>
+</html>
