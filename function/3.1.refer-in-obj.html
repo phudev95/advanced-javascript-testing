@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function - Refer in Object</title>
+</head>
+<body>
+    <script src="../libs/core.js"></script>
+    <script type="text/javascript">
+        var ninja = {
+            yell: function (n) {
+                return n > 0 ? ninja.yell(n - 1) + "a" : "hiy";
+            }
+        };
+
+        // Add well, it have run
+        assert(ninja.yell(4) == "hiyaaaa", "A single object isn't too bad, either.");
+    </script>
+</body>
+</html>
