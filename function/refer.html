@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function - Refer</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // We can refer to a function, within itself, by its name.
+        function yell (n) {
+            return n > 0 ? yell(n - 1) + "a" : "hiy";
+        }
+        
+        if (yell(4) == "hiyaaaa") {
+            console.warn("Calling the function by itself comes naturally.");
+        }
+    </script>
+</body>
+</html>
