@@ -1,5 +1,11 @@
-function assert (condition, args) {
+function assert () {
+    var args = Array.prototype.slice.call(arguments);
+    var condition = args.shift();
+
     if (condition) {
-        console.log(args);
+        console.log.apply(this, args);
+    }
+    else {
+        console.error.apply(this, args);
     }
 }

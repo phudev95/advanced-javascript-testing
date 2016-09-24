@@ -7,14 +7,37 @@
 <body>
     <script src="../libs/core.js"></script>
     <script type="text/javascript">
-        var ninja = {
-            yell: function (n) {
-                return n > 0 ? ninja.yell(n - 1) + "a" : "hiy";
-            }
-        };
+        (function () {
+            var ninja = {
+                yell: function (n) {
+                    return n > 0 ? ninja.yell(n - 1) + "a" : "hiy";
+                }
+            };
 
-        // Add well, it have run
-        assert(ninja.yell(4) == "hiyaaaa", "A single object isn't too bad, either.");
+            // Add well, it have run
+            assert(ninja.yell(4) == "hiyaaaa", "Case 1: A single object isn't too bad, either.");
+        })();
+
+
+        // Test with other case:
+        (function () {
+            var ninja = {
+                yell: function (n) {
+                    return n > 0 ? ninja.yell(n - 1) + "a" : "hiy";
+                }
+            };
+            assert(ninja.yell(4) == "hiyaaaa", "Case 2: A single object isn't too bad, either.");
+
+            var samurai = {yell: ninja.yell};
+            // ninja has type is Object, and it owns refer
+            var ninja = null;
+
+            try {
+                samurai.yell(4);
+            } catch (e) {
+                assert(false, "Case 3: Uh, this isn't good! Where'd ninja.yell go?", "What");
+            }
+        })();
     </script>
 </body>
 </html>
