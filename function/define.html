@@ -32,6 +32,19 @@
         }
         console.log("1. Foo: ", foo());// 1. Foo:  8
 
+        // Ex 1.2:
+        function test_foo () {
+            return bar();
+
+            function bar () {
+                return 3;
+            }
+
+            function bar () {
+                return 8;
+            }
+        }
+        console.log("1.2. Test_foo: ", test_foo());// 1.2. Test_foo:  8
 
         //--- Function Expressions
         /*
@@ -55,6 +68,23 @@
             };
         }
         console.log("2. Do Something: ", dosomething());// 2. Do Something:  3
+
+        // Ex 2: It working not same with Ex 1.2
+        function test_something () {
+            return bar();
+
+            var bar = function () {
+                return 3;
+            };
+
+            var bar = function () {
+                return 8;
+            };
+        }
+
+        // Show error on Console:
+        // define.html:61 Uncaught TypeError: bar is not a function
+        console.log("3. Test Something: ", test_something());
     </script>
 </body>
 </html>
