@@ -6,28 +6,27 @@
 </head>
 <body>
     <script type="text/javascript">
-        function is_prime (num) {
-            var res = true;
-
-            for (var j=2; j <= Math.sqrt(num); j++) {
-                if (num % j == 0) {
-                    res = false;
-                    break;
-                }
+        var primeLessThan = function primeLessThan (n) {
+            var arrayNumberLessEqN = [];
+            for (var idx = 2; idx <= n; idx++) {
+                arrayNumberLessEqN.push(idx);
             }
+            return primeRes(arrayNumberLessEqN);
+        };
 
-            return res;
-        }
+        var primeRes = function primeRes () {
+            var arr = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
 
-        var max = 1000;
-        var results = [];
+            if (arr.length == 0) return [];
+            if (arr.length == 1) return arr;
+            var firstItem = arr.shift();
+            var filterArray = arr.filter(function (el) {
+                return el % firstItem != 0;
+            });
+            return [firstItem].concat(primeRes(filterArray));
+        };
 
-        for (var i = 2; i <= max; i++) {
-            if (is_prime(i))
-                results.push(i);
-        }
-
-        console.log('Prime:', results.length);
+        console.log(primeLessThan(100));
     </script>
 </body>
 </html>
