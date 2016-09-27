@@ -20,9 +20,11 @@
             if (arr.length == 0) return [];
             if (arr.length == 1) return arr;
             var firstItem = arr.shift();
+
             var filterArray = arr.filter(function (el) {
                 return el % firstItem != 0;
             });
+
             return [firstItem].concat(primeRes(filterArray));
         };
 
