@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function - Prime</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function is_prime (num) {
+            var res = true;
+
+            for (var j=2; j <= Math.sqrt(num); j++) {
+                if (num % j == 0) {
+                    res = false;
+                    break;
+                }
+            }
+
+            return res;
+        }
+
+        var max = 1000;
+        var results = [];
+
+        for (var i = 2; i <= max; i++) {
+            if (is_prime(i))
+                results.push(i);
+        }
+
+        console.log('Prime:', results.length);
+    </script>
+</body>
+</html>
