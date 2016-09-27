@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function - Callee in arguments</title>
+</head>
+<body>
+    <script type="text/javascript">
+        (function () {
+            function recursive(n) {
+                return !(n > 1) ? 1 : recursive(n - 1) * n;
+            }
+            
+            var numbers = [1,2,3,4,5,6];
+            var increase = numbers.map(recursive);
+            console.log('Case 1:', increase);
+        })();
+
+        (function () {
+            var numbers = [1,2,3,4,5,6];
+            var increase = numbers.map(function (n) {
+                // return !(n > 1) ? 1 : /*????*/ (n - 1) * n;
+
+                // Solution: Using arguments.callee instead 'recursive'
+                return !(n > 1) ? 1 : arguments.callee(n - 1) * n;
+            });
+            console.log('Case 2:', increase);
+        })();
+    </script>
+</body>
+</html>

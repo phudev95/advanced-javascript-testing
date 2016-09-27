@@ -9,3 +9,5 @@ function assert () {
         console.error.apply(this, args);
     }
 }
+
+// http://ejohn.org/apps/learn/#17

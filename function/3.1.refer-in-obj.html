@@ -10,12 +10,14 @@
         (function () {
             var ninja = {
                 yell: function (n) {
-                    return n > 0 ? ninja.yell(n - 1) + "a" : "hiy";
+                    console.log(n);
+                    return n > 0 ? ninja.yell(n - 1) + "e" + n + "-" : "hiy";
                 }
             };
 
             // Add well, it have run
-            assert(ninja.yell(4) == "hiyaaaa", "Case 1: A single object isn't too bad, either.");
+            console.warn(ninja.yell(6));
+            assert(ninja.yell(6) == "hiye1-e2-e3-e4-e5-e6-", "Case 1: A single object isn't too bad, either.");
         })();
 
 
@@ -30,13 +32,40 @@
 
             var samurai = {yell: ninja.yell};
             // ninja has type is Object, and it owns refer
-            var ninja = null;
+            ninja = null;
 
             try {
                 samurai.yell(4);
             } catch (e) {
-                assert(false, "Case 3: Uh, this isn't good! Where'd ninja.yell go?", "What");
+                // TypeError: Cannot read property 'yell' of null(…)
+                console.log(samurai);
+                console.log(ninja);
+                assert(false, "Case 3: Uh, this isn't good! Where'd ninja.yell go?");
             }
+        })();
+
+        (function () {
+            var ninja = {
+                yell: function yell_bb (n) {
+                    // Call to itself
+                    return n > 0 ? yell_bb(n - 1) + "a" : "hiy";
+                }
+            };
+            assert(ninja.yell(4) == "hiyaaaa", "Case 4: Works as we would expect it to!");
+
+            var samurai = {yell: ninja.yell};
+            var ninja = {};
+            assert(samurai.yell(4) == "hiyaaaa", "Case 5: The method correctly calls itself.");
+        })();
+
+        // Using property callee in arguments Object to call itself
+        (function () {
+            var ninja = {
+                yell: function (n) {
+                    return n > 0 ? arguments.callee(n - 1) + "a" : "hiy";
+                }
+            };
+            assert(ninja.yell(4) == "hiyaaaa", "Case 6: arguments.callee is the function itself.");
         })();
     </script>
 </body>
